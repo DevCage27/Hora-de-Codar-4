@@ -1,0 +1,79 @@
+//exercicio 1: laço de repetição com flag
+fun main () {
+    val rAs = mutableListOf<String>()
+    var continuar = true
+
+    println("Cadastrar alunos da sala 1 (somente números)")
+    while (continuar == true) {
+        println("digite o R.A  do aluno: ")
+        rAs.add(readln())
+        println("continuar com cadastramentos?")
+        println("sim/parar")
+        var decisão = readln()
+        if (decisão.lowercase() == "parar") {
+            continuar = false
+            continue
+        }
+    }
+    if (continuar == false) {
+        println("deseja ver os números cadastrados?")
+        println("S/N?")
+        var segundaD = readln()
+        if (segundaD.lowercase() == "s") {
+            println("a lista de R.A'S cadastrados")
+            println("$rAs")
+        }
+            println(" A lista tem total ${rAs.size} alunos.")
+    }
+   exer2()
+}
+//exercicio 2 S
+fun exer2 () {
+    println()
+    println("Sistema solar")
+    val planetas = listOf("Terra", "Marte", "Plutão", "Vênus", "Júpiter", "Saturno")
+    println("Digite o nome de um planeta: ")
+    val planetaInformado = readln().lowercase()
+    if (planetas.any { it.lowercase() == planetaInformado }) {
+        println ("o planeta informado está no array sistema solar =) ")
+    }
+    else {
+        println("o planeta informado não está no array do sistema =(")
+    }
+    exer3()
+}
+
+fun exer3 () {
+    println()
+    println("Listinha de frutas")
+    val frutas = mutableListOf("Maçã", "Banana", "Abacaxi", "Damasco", "mamão", "caqui", "abacate", "laranja")
+
+    while (frutas.isNotEmpty()) {
+        println()
+        println("Essa é a lista de frutas")
+        println(frutas)
+        println("deseja retirar alguma fruta? (se quiser finalizar a compra, digite sair")
+        val frutaescolhida = readln().lowercase()
+
+        if (frutaescolhida == "sair") {
+            println("finalizando a compra.")
+            break
+        }
+
+        val frutaencontrada = frutas.find {it.lowercase() == frutaescolhida}
+
+        if (frutaencontrada != null) {
+            frutas.remove(frutaencontrada)
+            println("Aqui está a nova lista")
+            println()
+            println(frutas)
+        }
+        else {
+            println()
+            println("a fruta não está na lista, tente optar por outra!")
+        }
+        if (frutas.isEmpty()) {
+            println("as frutas acabaram, a lista está vazia")
+        }
+    }
+}
